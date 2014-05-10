@@ -1,0 +1,143 @@
+.sideeffects text {
+  font-family: sans-serif;
+  fill: #666;
+}
+
+.sideeffects text.title {
+  text-anchor: middle;
+  alignment-baseline: text-before-edge;
+  font-size: 22px;
+}
+
+/*
+/* Axis styles
+ */
+.sideeffects .x.axis line,
+.sideeffects .x.axis .domain {
+  fill: none;
+  stroke: #ccc;
+}
+
+.sideeffects .x.axis text {
+  font-size: 12px;
+  fill: #ccc;
+}
+
+/*
+ * Label styles
+ */
+.sideeffects g.label .sublabel {
+  font-size: 14px;
+  fill: #ccc;
+  alignment-baseline: text-before-edge;
+}
+
+.sideeffects g.label .sublabel.small {
+  font-size: 12px;
+  alignment-baseline: auto;
+}
+
+.sideeffects g.data circle {
+  fill: #666;
+}
+
+.sideeffects g.data text.label {
+  text-anchor: end;
+  fill: #444;
+}
+
+
+
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+body {
+  background-color: #fff;
+  color: #3a3a3a;
+  font-family: "Open Sans", Calibri, sans-serif;
+  font-weight: 400;
+  font-size: 17.5px;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  position: relative;
+}
+
+.api-query textarea {
+  color: #bedfff;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, .3);
+  margin: 12px 0 15px 0;
+  border: none;
+  background: #494855;
+  resize: none;
+  
+  -webkit-box-shadow: inset 0 1px 0 0 rgba(0, 0, 0, 1);
+  -moz-box-shadow:    inset 0 1px 0 0 rgba(0, 0, 0, 1);
+  box-shadow:         inset 0 1px 0 0 rgba(0, 0, 0, 1);
+
+  -webkit-transition: background .2s ease-in-out .1s;
+  -moz-transition: background .2s ease-in-out .1s;
+  -ms-transition: background .2s ease-in-out .1s;
+  transition: background .2s ease-in-out .1s;
+}
+.api-query textarea:hover {
+  color: #d2e2ff;
+  background: #535362;
+}
+
+.api-query textarea:focus {
+  color: #d2e2ff;
+  background: #535362;
+  -webkit-box-shadow: inset 0 1px 0 0 rgba(0, 0, 0, 1);
+  -moz-box-shadow:    inset 0 1px 0 0 rgba(0, 0, 0, 1);
+  box-shadow:         inset 0 1px 0 0 rgba(0, 0, 0, 1);
+}
+.api-query .btn {
+  font-size: 14px;
+  font-weight: 400;
+  color: #fafafa;
+  -webkit-text-shadow: 0px 1px 0px rgba(0, 0, 0, .3);
+  text-shadow: 0px 1px 0px rgba(0, 0, 0, .3);
+  -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.2);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.2);
+  white-space: nowrap;
+  border: 1px solid #1d2643;
+  background: #026dd9;
+  background: -webkit-linear-gradient(top, #068cff 0, #026dd9 100%);
+  background: -moz-linear-gradient(top, #068cff 0, #026dd9 100%);
+  background: -o-linear-gradient(top, #068cff 0, #026dd9 100%);
+  background: -ms-linear-gradient(top, #068cff 0, #026dd9 100%);
+  background: linear-gradient(to bottom, #068cff 0, #026dd9 100%);
+}
+
+
+.c3 svg {
+  font-family: "Open Sans", Calibri, sans-serif;
+}
+.chart svg {
+  margin-top: 15px;
+  height: 100%;
+}
+.chart svg rect {
+  fill: #777;
+  -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 1);
+}
+.chart svg text {
+  font: 7px;
+  text-anchor: start;
+  /*text-transform: capitalize;*/
+}
+.chart svg .axis text {
+  fill: #aaa;
+  font: 7px;
+  /*text-transform: capitalize;*/
+}
+.chart svg .axis path,
+.chart svg .axis line {
+  fill: none;
+  stroke: #aaa;
+  shape-rendering: crispEdges;
+}
