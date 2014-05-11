@@ -10,11 +10,12 @@
     <link rel="stylesheet" type="text/css" href="openfda-query-explorer.css">
   </head>
   <body>
-    <div class="container">
+    <div class="container-fluid">
       <div class="row">
         <section class="api-query col-md-12">
           <div class="row">
-            <div class="form-group col-md-12">
+            <div class="col-md-12">
+              <h3>openFDA query explorer prototype</h3>
               <div>
                 <pre id="query-endpoint">https://api.fda.gov/drug/event.json?</pre>
               </div>
@@ -22,16 +23,12 @@
           </div>
           
           <div class="row">
-            <div class="form-group col-md-6">
-              <label for="query-search control-label"><pre>search=</pre></label>
-              <textarea id="query-search" class="query-textarea form-control"></textarea>
-            </div>
-            <div class="form-group col-md-6">
-              <label for="query-count control-label col-sm-3"><pre>count=</pre></label>
-              <textarea id="query-count" class="query-textarea form-control">primarysource.qualification</textarea>
-            </div>
+            <div class="col-md-1"><label for="query-search control-label"><pre>search=</pre></label></div>
+            <div class="col-md-5"><textarea id="query-search" class="query-textarea form-control">openfda.unii_indexing.va.name:"nonsteroidal+anti-inflammatory+drug"</textarea></div>
+            <div class="col-md-1"><label for="query-count control-label"><pre>count=</pre></label></div>
+            <div class="col-md-5"><textarea id="query-count" class="query-textarea form-control">patient.reaction.reactionmeddrapt.exact</textarea></div>
           </div>
-
+          
           <div class="row">
             <div class="form-group">
               <div class="col-md-2 col-md-offset-10">
@@ -41,62 +38,99 @@
           </div>
         </section>
       </div>
+
       <div class="row">
-        <section class="col-md-3 api-query-control">
-          <!-- <div class="radio">
-            <label>
-              <input type="radio" name="api-query-options-search" id="company-either" value="" checked>
-              <strong>All adverse event reports</strong>
-            </label>
-          </div>
-          <div class="radio">
-            <label>
-              <input type="radio" name="api-query-options-search" id="company-yes" value="_exists_:companynumb">
-              <strong>Reports routed through manufacturers</strong><br />
-              <span style="color: #999">A manufacturer number in the field `companynumb`</span>
-            </label>
-          </div>
-          <div class="radio">
-            <label>
-              <input type="radio" name="api-query-options-search" id="company-no" value="_missing_:companynumb">
-              <strong>Reports directly from consumers</strong><br />
-              <span style="color: #999">Empty field `companynumb`</span>
-            </label>
-          </div> -->
-          <div class="radio">
-            <label>
-              <input type="radio" name="api-query-options-count" id="count-country" value="patient.reaction.reactionmeddrapt.exact">
-              <strong>Patient reaction</strong>
-            </label>
-          </div>
-          <div class="radio">
-            <label>
-              <input type="radio" name="api-query-options-count" id="count-country" value="primarysource.reportercountry.exact">
-              <strong>Reporter country</strong>
-            </label>
-          </div>
-          <div class="radio">
-            <label>
-              <input type="radio" name="api-query-options-count" id="count-qualification" value="primarysource.qualification">
-              <strong>Report originator</strong>
-            </label>
-          </div>
-          <div class="radio">
-            <label>
-              <input type="radio" name="api-query-options-count" id="count-serious" value="serious">
-              <strong>Serious</strong>
-            </label>
-          </div>
-          <div class="radio">
-            <label>
-              <input type="radio" name="api-query-options-count" id="count-sex" value="patient.patientsex">
-              <strong>Patient sex</strong>
-            </label>
-          </div>
-        </section>
-        <section class="chart col-md-8 col-md-offset-1">
-          <div id="chart">
-          </div>
+        <section class="col-md-12">
+          <section class="col-md-2 api-query-control">
+            <div class="row">
+              <h4>Search ideas</h4>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="api-query-options-search" id="company-either" value="">
+                  <strong>All adverse event reports</strong>
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="api-query-options-search" id="company-yes" value="_exists_:companynumb">
+                  <strong>Reported by manufacturers</strong>
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="api-query-options-search" id="company-no" value="_missing_:companynumb">
+                  <strong>Reported directly by public</strong>
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="api-query-options-search" id="reaction-nausea" value="patient.reaction.reactionmeddrapt:nausea">
+                  <strong>Reactions included <em>nausea</em></strong>
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="api-query-options-search" id="reaction-nausea" value="patient.drug.drugindication:hypertension">
+                  <strong>Indications included <em>hypertension</em></strong>
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="api-query-options-search" id="reaction-nausea" value="patient.drug.drugindication:sclerosis+AND+serious:2">
+                  <strong>Indications included <em>sclerosis</em> and <em>not serious</em></strong>
+                </label>
+              </div>
+            </div>
+            
+            <div class="row">
+              <h4 style="margin-top: 15px;">Count options</h4>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="api-query-options-count" id="count-country" value="patient.reaction.reactionmeddrapt.exact">
+                  <strong>Patient reaction</strong>
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="api-query-options-count" id="count-country" value="primarysource.reportercountry.exact">
+                  <strong>Reporter country</strong>
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="api-query-options-count" id="count-qualification" value="primarysource.qualification">
+                  <strong>Report originator</strong>
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="api-query-options-count" id="count-serious" value="serious">
+                  <strong>Serious</strong>
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="api-query-options-count" id="count-sex" value="patient.patientsex">
+                  <strong>Patient sex</strong>
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="api-query-options-count" id="count-indication" value="patient.drug.drugindication.exact">
+                  <strong>Indications for use</strong>
+                </label>
+              </div>
+            </div>
+          </section>
+          
+          <section class="chart col-md-2">
+            <h3 style="color: #bababa">Coverage</h3>
+            <div id="chart-coverage"></div>
+          </section>
+          <section class="chart col-md-8">
+            <h3 id="result-count"></h3>
+            <div id="chart"></div>
+          </section>
         </section>
       </div>
       <div class="row">
@@ -105,6 +139,8 @@
     </div>
     
     <script type="text/javascript">
+      var resultMax, resultTotal;
+
       function displayData(data) {
         data = data.slice(1,21);
 
@@ -114,16 +150,6 @@
             $('<dd>' + v + '</dd>').appendTo(dl);
           });
           dl.appendTo('#result');
-        });
-      };
-
-      function getTotalsFromData(data) {
-        data = data.slice(0,1);
-        $.each(data, function(key, val) {
-          $.each(val, function(k, v) {
-          // console.log(v);
-          // appendTo($("#result"));
-          });
         });
       };
 
@@ -155,41 +181,70 @@
           chartContent = "count";
           return chartContent;
         }
-        // console.log(chartContent);
       };
 
-      // Standalone chart var.
-      // var chart = c3.generate({
-      //   data: {
-      //     columns: [],
-      //     // type : 'donut'
-      //   },
-      //   color: {
-      //     pattern:['#9541a3', '#623ca5', '#3643a8', '#307aaa', '#29aca1', '#23af5e', '#25b11c', '#6bb316', '#b6b10f', '#b85d07']
-      //   },
-      //   bar: {
-      //     width: {
-      //       ratio: 1.0 // this makes bar width 50% of length between ticks
-      //     }
-      //   }
-      // });
+      function getResultTotal(data) {
+        return data[0].results.total;
+      };
+
+      function updateCoverageChart(resultMax, resultTotal) {
+        resultMax -= resultTotal;
+
+        var chart = c3.generate({
+          bindto: '#chart-coverage',
+          data: {
+            columns: [
+              ['Non-matching reports', resultMax],
+              ['Matching reports', resultTotal]
+            ],
+            type: 'bar',
+            groups: [
+              ['Non-matching reports', 'Matching reports']
+            ]
+          },
+          color: {
+            pattern: ['#bbb', '#0053ab']
+          },
+          width: 50,
+          height: 100,
+          margin: 0,
+          legend: {
+            show: false
+          },
+          axis: {
+            x: {
+              show: false
+            },
+            y: {
+              show: false
+            }
+          },
+          bar: {
+            width: {
+              ratio: .5
+            }
+          }
+        });
+      };
+
+      function updateResultCount(data) {
+        $("#result-count").text(data + " matching adverse event reports");
+      };
 
       function drawChartWithData(data) {
         var dataForChart = [],
-            chartContent = determineChartContent(data)
-            // ;
-            ,
+            chartContent = determineChartContent(data),
             chart = c3.generate({
               data: {
                 columns: [],
                 type : 'donut'
               },
               color: {
-                pattern:['#9541a3', '#623ca5', '#3643a8', '#307aaa', '#29aca1', '#23af5e', '#25b11c', '#6bb316', '#b6b10f', '#b85d07']
+                pattern: ['#8551a3', '#323aa5', '#7f8091', '#4689aa', '#45ac7e', '#5e991f', '#a6b11f', '#b37748', '#b65388', '#b85d07']
               },
               bar: {
                 width: {
-                  ratio: 1.0 // this makes bar width 50% of length between ticks
+                  ratio: 1.0
                 }
               }
             });
@@ -217,10 +272,10 @@
           iterateThroughValues(data, processingLogic);
           chart.load({
             columns: dataForChart,
-            // type: "bar",
+            type: "bar",
             title: "Generic count"
           });
-          chart.toBar();
+          // chart.toBar();
         }
         else if (chartContent == "primarysource.qualification") {
           data = data.slice(1, 6);
@@ -231,21 +286,16 @@
               else if (v == "3") { v = "Other health professional" }
               else if (v == "4") { v = "Lawyer" }
               else if (v == "5") { v = "Consumer or non-health professional" }
-              // else if (v == "UNITED STATES") { v = "Pharmacist" }
-              // else if (v == "JAPAN") { v = "Physician" }
-              // else if (v == "UNITED KINGDOM") { v = "Lawyer" }
-              // else if (v == "FRANCE") { v = "Consumer or non-health professional" }
-              // else if (v == "GERMANY") { v = "Other health professional" }
             }
             return v;
           };
           iterateThroughValues(data, processingLogic);
           chart.load({
             columns: dataForChart,
-            // type: "donut",
+            type: "donut",
             title: "Report originator"
           });
-          chart.toDonut();
+          // chart.toDonut();
         }
         else if (chartContent == "primarysource.reportercountry") {
           data = data.slice(1,11);
@@ -256,10 +306,10 @@
           iterateThroughValues(data, processingLogic);
           chart.load({
             columns: dataForChart,
-            // type: "bar",
+            type: "bar",
             title: "Reporter country"
           });
-          chart.toBar();
+          // chart.toBar();
         }
         else if (chartContent == "serious") {
           data = data.slice(1, 3);
@@ -273,10 +323,10 @@
           iterateThroughValues(data, processingLogic);
           chart.load({
             columns: dataForChart,
-            // type: "donut",
+            type: "donut",
             title: "Seriousness"
           });
-          chart.toDonut();
+          // chart.toDonut();
         }
         else if (chartContent == "patient.patientsex") {
           data = data.slice(1, 4);
@@ -291,261 +341,78 @@
           iterateThroughValues(data, processingLogic);
           chart.load({
             columns: dataForChart,
-            // type: "donut",
+            type: "donut",
             title: "Patient sex"
           });
-          chart.toDonut();
+          // chart.toDonut();
         }
         else {
           console.log("Not countable")
         }
-
-        // Original data processing
-        //
-        // if (chartContent == "primarysource.qualification") {
-        //   chartType = "donut";
-        //   data = data.slice(1,6);
-        //   $.each(data, function(key, val) {
-        //     var dataPair = [];
-        //     $.each(val, function (k, v) {
-        //       if (k == "term") {
-        //         if      (v == "1") { v = "Physician" }
-        //         else if (v == "2") { v = "Pharmacist" }
-        //         else if (v == "3") { v = "Other health professional" }
-        //         else if (v == "4") { v = "Lawyer" }
-        //         else if (v == "5") { v = "Consumer or non-health professional" }
-        //         dataPair.push(v);
-        //       }
-        //       else if (k == "count") {
-        //         dataPair.push(v);
-        //       }
-        //     });
-        //     dataForChart.push(dataPair);
-        //   });
-        //   chart.load({
-        //     columns: dataForChart,
-        //     type: "donut",
-        //     title: "Report originator"
-        //   });
-        // }
-        // else if (chartContent == "primarysource.reportercountry") {
-        //   data = data.slice(1,11);
-        //   $.each(data, function(key, val) {
-        //     var dataPair = [];
-        //     $.each(val, function (k, v) {
-        //       if (k == "term") {
-        //         dataPair.push(v);
-        //       }
-        //       else if (k == "count") {
-        //         dataPair.push(v);
-        //       }
-        //     });
-        //     dataForChart.push(dataPair);
-        //   });
-        //   chart.load({
-        //     columns: dataForChart,
-        //     type: "bar",
-        //     title: "Reporter country",
-        //     axis: {
-        //       y: {
-        //         tick: {
-        //           culling: {
-        //             max: 150
-        //           }
-        //         }
-        //       }
-        //     }
-        //   });
-        // }
-        // else {
-        //   console.log("Not primarysource")
-        // }
-
-        // var chart = c3.generate({
-        //   data: {
-        //     columns: dataForChart,
-        //     type : 'donut',
-        //   },
-        //   color: {
-        //     pattern:['#9541a3', '#623ca5', '#3643a8', '#307aaa', '#29aca1', '#23af5e', '#25b11c', '#6bb316', '#b6b10f', '#b85d07']
-        //   },
-        //   donut: {
-        //     title: "Report originator",
-        //     onclick: function (d, i) { console.log(d, i); },
-        //     onmouseover: function (d, i) { console.log(d, i); },
-        //     onmouseout: function (d, i) { console.log(d, i); }
-        //   },
-        //   bar: {
-        //     width: {
-        //       ratio: 0.5 // this makes bar width 50% of length between ticks
-        //     }
-        //   }
-        // });
-
-        console.log(dataForChart);
       };
 
-      function runQuery(queryString) {
-        // Mock data.
-        // var data = [
-        //    {
-        //       openfda: {
-        //          disclaimer: "openFDA is a beta research project and not for clinical use. While we make every effort to ensure that data is accurate, you should assume all results are unvalidated.",
-        //          license: "The data within this API is Public Domain and released under Creative Commons CC0.",
-        //          last_updated: "2014-05-01"
-        //       },
-        //       results: {
-        //          total: 42396
-        //       }
-        //    },
-        //    {
-        //       term: "UNITED STATES",
-        //       count: 2262128
-        //    },
-        //    {
-        //       term: "JAPAN",
-        //       count: 203893
-        //    },
-        //    {
-        //       term: "UNITED KINGDOM",
-        //       count: 158195
-        //    },
-        //    {
-        //       term: "FRANCE",
-        //       count: 127959
-        //    },
-        //    {
-        //       term: "GERMANY",
-        //       count: 117715
-        //    },
-        //    {
-        //       term: "CANADA",
-        //       count: 77891
-        //    },
-        //    {
-        //       term: "BRAZIL",
-        //       count: 48662
-        //    },
-        //    {
-        //       term: "AUSTRALIA",
-        //       count: 38949
-        //    },
-        //    {
-        //       term: "ITALY",
-        //       count: 35332
-        //    },
-        //    {
-        //       term: "SPAIN",
-        //       count: 28884
-        //    },
-        //    {
-        //       term: "SWITZERLAND",
-        //       count: 25234
-        //    },
-        //    {
-        //       term: "NETHERLANDS",
-        //       count: 22011
-        //    },
-        //    {
-        //       term: "DENMARK",
-        //       count: 16395
-        //    },
-        //    {
-        //       term: "BELGIUM",
-        //       count: 15857
-        //    },
-        //    {
-        //       term: "SWEDEN",
-        //       count: 14615
-        //    },
-        //    {
-        //       term: "IRELAND",
-        //       count: 12629
-        //    },
-        //    {
-        //       term: "CHINA",
-        //       count: 12425
-        //    },
-        //    {
-        //       term: "KOREA, REPUBLIC OF",
-        //       count: 9845
-        //    },
-        //    {
-        //       term: "INDIA",
-        //       count: 9577
-        //    },
-        //    {
-        //       term: "TURKEY",
-        //       count: 9478
-        //    },
-        //    {
-        //       term: "MEXICO",
-        //       count: 9268
-        //    },
-        //    {
-        //       term: "GREECE",
-        //       count: 8794
-        //    },
-        //    {
-        //       term: "AUSTRIA",
-        //       count: 8349
-        //    },
-        //    {
-        //       term: "TAIWAN, PROVINCE OF CHINA",
-        //       count: 8129
-        //    },
-        //    {
-        //       term: "ARGENTINA",
-        //       count: 7449
-        //    },
-        //    {
-        //       term: "POLAND",
-        //       count: 7448
-        //    },
-        //    {
-        //       term: "NORWAY",
-        //       count: 7405
-        //    },
-        //    {
-        //       term: "SOUTH AFRICA",
-        //       count: 6259
-        //    },
-        //    {
-        //       term: "ISRAEL",
-        //       count: 6223
-        //    },
-        //    {
-        //       term: "FINLAND",
-        //       count: 5629
-        //    },
-        //    {
-        //       term: "PORTUGAL",
-        //       count: 5509
-        //    },
-        //    {
-        //       term: "COLOMBIA",
-        //       count: 5389
-        //    },
-        //    {
-        //       term: "VENEZUELA",
-        //       count: 5166
-        //    },
-        //    {
-        //       term: "NEW ZEALAND",
-        //       count: 4480
-        //    }
-        // ]
-        // getTotalsFromData(data);
-        // drawChartWithData(data);
+      function runQuery(queryStringForMax, queryStringForTotal, queryString) {
+        var queryStringForMax = queryStringForMax,
+            queryStringForTotal = queryStringForTotal;
 
-        // Use API.
+        // Run API query and draw chart with data.
+        //
         $.getJSON(queryString, function(data) {
-          getTotalsFromData(data);
           drawChartWithData(data);
+        });
+
+        // Update total number of matching results.
+        //
+        $.getJSON(queryStringForTotal, function(data) {
+          updateResultCount(getResultTotal(data));
+        });
+
+        // Update coverage chart.
+        //
+        var resultMax, resultTotal;
+        $.when(
+          $.getJSON(queryStringForMax, function(data) {
+            resultMax = getResultTotal(data);
+          }),
+          $.getJSON(queryStringForTotal, function(data) {
+            resultTotal = getResultTotal(data);
+          })
+        ).then(function() {
+          updateCoverageChart(resultMax, resultTotal);
         });
       };
 
       $(document).ready(function() {
+        function executeQuery() {
+          var queryString = "https://api.fda.gov/drug/event.json?",
+              // queryString = $(".api-query").find("#query-endpoint").text(),
+              querySearch = $(".api-query").find("#query-search").val(),
+              queryCount  = $(".api-query").find("#query-count").val();
+
+          // Temporary logic to run a separate query to get an accurate record count.
+          // Necessary because when queries have &count= the API returns an inaccurate
+          // total in the openfda metadata section.
+          // 
+          var queryStringForMax = (queryString + "search=_exists_:receivedate&limit=1");
+          var queryStringForTotal = queryString;
+          querySearch != "" && (queryStringForTotal += "search=" + querySearch);
+          querySearch == "" && (queryStringForTotal += "search=_exists_:receivedate&limit=1");
+          
+          // Construct the full queryString.
+          //
+          querySearch != "" && (queryString += "search=" + querySearch);
+          queryCount  != "" && (queryString += "&count=" + queryCount);
+
+          runQuery(queryStringForMax, queryStringForTotal, queryString);
+          $(".api-query").find("#query-endpoint").text(queryString);
+        };
+        
+        // Execute on initial page load.
+        //
+        executeQuery();
+        
+        // Handle keypresses.
+        //
         $(".query-textarea").keypress(function(e) {
           var code = (e.keyCode ? e.keyCode : e.which),
               button = $(this).parents(".api-query").find("button#query-button");
@@ -557,20 +424,18 @@
           };
         });
 
-        // Change SEARCH= parameter
+        // Change SEARCH= parameter based on radio value.
         //
         $("input[name=api-query-options-search]:radio").change(function() {
-          console.log($(this).val());
           var queryTextArea = $(".api-query").find("#query-search"),
               queryStringFromRadioButton = $(this).val();
           queryTextArea.val(queryStringFromRadioButton);
           $("button#query-button").trigger("click");
         });
 
-        // Change COUNT= parameter
+        // Change COUNT= parameter based on radio value.
         //
         $("input[name=api-query-options-count]:radio").change(function() {
-          // console.log($(this).val());
           var queryTextArea = $(".api-query").find("#query-count"),
               queryStringFromRadioButton = $(this).val();
           queryTextArea.val(queryStringFromRadioButton);
@@ -578,14 +443,7 @@
         });
 
         $("button#query-button").click(function () {
-          var queryString = $(this).parents(".api-query").find("#query-endpoint").text(),
-              querySearch = $(this).parents(".api-query").find("#query-search").val(),
-              queryCount  = $(this).parents(".api-query").find("#query-count").val();
-
-          queryString != "" && (queryString += "search=" + querySearch);
-          queryCount  != "" && (queryString += "&count=" + queryCount);
-
-          runQuery(queryString);
+          executeQuery();
         });
       });
     </script>
