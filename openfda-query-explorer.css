@@ -26,7 +26,18 @@ body {
 /*
 /*
 /* API query explorer styles. */
-
+.container-fluid {
+  margin: 2em 4em 3em 4em;
+}
+h1 {
+  font-size: 1.4em;
+  line-height: 1.7;
+  margin-bottom: 2ex;
+  color: #999;
+}
+h1 small {
+  font-size: 14px;
+}
 .chart h3 {
   margin-top: 0;
   font-weight: normal;
@@ -83,6 +94,9 @@ body {
 .api-query-control {
   font-size: 15px;
 }
+.api-query-control h4 {
+  color: #999;
+}
 
 /*
 /*
@@ -117,8 +131,14 @@ body {
   stroke: #aaa;
   shape-rendering: crispEdges;
 }
+.chart.coverage {
+  color: #aaa;
+  text-align: center;
+}
+.chart #chart-coverage {
+  margin-bottom: 2ex;
+}
 .chart #chart-coverage svg {
-  width: 100%;
-  height: 260px;
-  margin: 0;
+  width: 90px;
+  height: 90px;
 }

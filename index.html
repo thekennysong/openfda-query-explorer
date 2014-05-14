@@ -12,10 +12,14 @@
   <body>
     <div class="container-fluid">
       <div class="row">
-        <section class="api-query col-md-12">
+        <section class="api-query col-sm-12">
           <div class="row">
-            <div class="col-md-12">
-              <h3>openFDA query explorer prototype</h3>
+            <div class="col-sm-12">
+              <h1>
+              	openFDA query explorer prototype<br />
+              	<small><a href="http://fda.github.io/openfda-private-beta/drug/reference/">&hellip;and API reference</a></small>
+              </h1>
+
               <div>
                 <pre id="query-endpoint">https://api.fda.gov/drug/event.json?</pre>
               </div>
@@ -23,15 +27,15 @@
           </div>
           
           <div class="row">
-            <div class="col-md-1"><label for="query-search control-label"><pre>search=</pre></label></div>
-            <div class="col-md-5"><textarea id="query-search" class="query-textarea form-control">openfda.unii_indexing.va.name:"nonsteroidal+anti-inflammatory+drug"</textarea></div>
-            <div class="col-md-1"><label for="query-count control-label"><pre>count=</pre></label></div>
-            <div class="col-md-5"><textarea id="query-count" class="query-textarea form-control">patient.reaction.reactionmeddrapt.exact</textarea></div>
+            <div class="col-sm-1"><label for="query-search control-label"><pre>search=</pre></label></div>
+            <div class="col-sm-5"><textarea id="query-search" class="query-textarea form-control">openfda.unii_indexing.va.name:"nonsteroidal+anti-inflammatory+drug"</textarea></div>
+            <div class="col-sm-1"><label for="query-count control-label"><pre>count=</pre></label></div>
+            <div class="col-sm-5"><textarea id="query-count" class="query-textarea form-control">patient.reaction.reactionmeddrapt.exact</textarea></div>
           </div>
           
           <div class="row">
             <div class="form-group">
-              <div class="col-md-2 col-md-offset-10">
+              <div class="col-sm-2 col-sm-offset-10">
                 <button id="query-button" class="form-control btn btn-primary">Run query</button>
               </div>
             </div>
@@ -40,101 +44,116 @@
       </div>
 
       <div class="row">
-        <section class="col-md-12">
-          <section class="col-md-2 api-query-control">
+        <section class="col-sm-12">
+          <section class="col-sm-2 api-query-control">
             <div class="row">
               <h4>Search ideas</h4>
               <div class="radio">
                 <label>
                   <input type="radio" name="api-query-options-search" id="company-either" value="">
-                  <strong>All adverse event reports</strong>
+                  All adverse event reports
                 </label>
               </div>
               <div class="radio">
                 <label>
                   <input type="radio" name="api-query-options-search" id="company-yes" value="_exists_:companynumb">
-                  <strong>Reported by manufacturers</strong>
+                  Reported by manufacturers
                 </label>
               </div>
               <div class="radio">
                 <label>
                   <input type="radio" name="api-query-options-search" id="company-no" value="_missing_:companynumb">
-                  <strong>Reported directly by public</strong>
+                  Reported directly by public
                 </label>
               </div>
               <div class="radio">
                 <label>
                   <input type="radio" name="api-query-options-search" id="reaction-nausea" value="patient.reaction.reactionmeddrapt:nausea">
-                  <strong>Reactions included <em>nausea</em></strong>
+                  Reactions included <em>nausea</em>
                 </label>
               </div>
               <div class="radio">
                 <label>
-                  <input type="radio" name="api-query-options-search" id="reaction-nausea" value="patient.drug.drugindication:hypertension">
-                  <strong>Indications included <em>hypertension</em></strong>
+                  <input type="radio" name="api-query-options-search" id="indication-hypertension" value="patient.drug.drugindication:hypertension">
+                  Indications for use included <em>hypertension</em>
                 </label>
               </div>
               <div class="radio">
                 <label>
-                  <input type="radio" name="api-query-options-search" id="reaction-nausea" value="patient.drug.drugindication:sclerosis+AND+serious:2">
-                  <strong>Indications included <em>sclerosis</em> and <em>not serious</em></strong>
+                  <input type="radio" name="api-query-options-search" id="indication-ms-not-serious" value="patient.drug.drugindication:multiple+sclerosis+AND+serious:2">
+                  Indications included <em>multiple sclerosis</em> AND reaction <em>not serious</em>
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="api-query-options-search" id="patient-sex-male-young" value="patient.patientsex:1+AND+patient.patientonsetage:[5+TO+17]">
+                  Patient sex <em>male</em> and age range <em>5 TO 17.</em>
                 </label>
               </div>
             </div>
             
             <div class="row">
-              <h4 style="margin-top: 15px;">Count options</h4>
+              <h4>Count options</h4>
               <div class="radio">
                 <label>
                   <input type="radio" name="api-query-options-count" id="count-country" value="patient.reaction.reactionmeddrapt.exact" checked>
-                  <strong>Patient reaction</strong>
+                  Patient reaction
                 </label>
               </div>
               <div class="radio">
                 <label>
                   <input type="radio" name="api-query-options-count" id="count-country" value="primarysource.reportercountry.exact">
-                  <strong>Reporter country</strong>
+                  Reporter country
                 </label>
               </div>
               <div class="radio">
                 <label>
                   <input type="radio" name="api-query-options-count" id="count-qualification" value="primarysource.qualification">
-                  <strong>Report originator</strong>
+                  Report originator
                 </label>
               </div>
               <div class="radio">
                 <label>
                   <input type="radio" name="api-query-options-count" id="count-serious" value="serious">
-                  <strong>Serious</strong>
+                  Serious
                 </label>
               </div>
               <div class="radio">
                 <label>
                   <input type="radio" name="api-query-options-count" id="count-sex" value="patient.patientsex">
-                  <strong>Patient sex</strong>
+                  Patient sex
                 </label>
               </div>
               <div class="radio">
                 <label>
                   <input type="radio" name="api-query-options-count" id="count-indication" value="patient.drug.drugindication.exact">
-                  <strong>Indications for use</strong>
+                  Indications for use
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="api-query-options-count" id="count-indication" value="patient.drug.medicinalproduct.exact">
+                  Drug (by name)
                 </label>
               </div>
             </div>
           </section>
           
-          <section class="chart col-md-2">
-            <h3 style="color: #bababa">Coverage</h3>
-            <div id="chart-coverage"></div>
-          </section>
-          <section class="chart col-md-8">
-            <h3 id="result-count"></h3>
-            <div id="chart"></div>
+          <section class="col-sm-10">
+          	<div class="row">
+          		<div class="chart col-sm-10">
+		            <h3 id="result-count"></h3>
+		            <div id="chart"></div>
+		          </div>
+		          <div class="chart coverage col-sm-2">
+		          	<div id="chart-coverage"></div>
+		          	<div><small>% of all reports</small></div>
+		          </div>
           </section>
         </section>
       </div>
       <div class="row">
-        <section id="result" class="col-md-3"></section>
+        <section id="result" class="col-sm-3"></section>
       </div>
     </div>
     
@@ -197,7 +216,7 @@
               ['Non-matching reports', resultMax],
               ['Matching reports', resultTotal]
             ],
-            type: 'bar',
+            type: 'donut',
             groups: [
               ['Non-matching reports', 'Matching reports']
             ]
@@ -205,8 +224,10 @@
           color: {
             pattern: ['#bbb', '#0053ab']
           },
-          width: 50,
-          height: 100,
+          size: {
+          	height: 90,
+	          width: 90,
+          },
           margin: 0,
           legend: {
             show: false
