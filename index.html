@@ -261,12 +261,18 @@
                 type : 'donut'
               },
               color: {
-                pattern: ['#8551a3', '#323aa5', '#7f8091', '#4689aa', '#45ac7e', '#5e991f', '#a6b11f', '#b37748', '#b65388', '#b85d07']
+                // pattern: ['#8551a3', '#323aa5', '#7f8091', '#4689aa', '#45ac7e', '#5e991f', '#a6b11f', '#b37748', '#b65388', '#b85d07']
+                // pattern: ['#f28c16', '#e8bd1e', '#d6dd25', '#a2d32b', '#76c831', '#51be36', '#3ab340', '#3da95e', '#409e74', '#419484', '#428589', '#426c7f', '#415775', '#3f476a', '#3f3d60', '#423955', '#42354b', '#3e3040', '#362b35', '#2b2429']
+                pattern: ['#8bc3e0', '#74a9d6', '#5e8dcc', '#4a6fc2', '#3751b8', '#8be095', '#74d674', '#6acc5e', '#64c24a', '#62b837', '#e0b28b', '#d69574', '#cc775e', '#c2574a', '#b83737', '#dc8be0', '#c674d6', '#ae5ecc', '#934ac2', '#7737b8']
               },
               bar: {
                 width: {
                   ratio: 1.0
                 }
+              },
+             	labels: true,
+              size: {
+              	height: 360
               }
             });
 
@@ -285,7 +291,7 @@
         };
 
         if (chartContent == "count") {
-          data = data.slice(1, 11);
+          data = data.slice(1, 21);
           var processingLogic = function(k, v) {
             k == "term" && (v = v.toLowerCase());
             return v;
@@ -319,7 +325,7 @@
           // chart.toDonut();
         }
         else if (chartContent == "primarysource.reportercountry") {
-          data = data.slice(1,11);
+          data = data.slice(1,21);
           var processingLogic = function(k, v) {
             k == "term" && (v = toTitleCase(v));
             return v;
@@ -468,5 +474,19 @@
         });
       });
     </script>
+
+    <script type="text/javascript">
+
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-15635360-1']);
+		  _gaq.push(['_trackPageview']);
+
+		  (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+
+		</script>
   </body>
 </html>
