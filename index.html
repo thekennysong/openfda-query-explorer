@@ -44,112 +44,111 @@
       </div>
 
       <div class="row">
-        <section class="col-sm-12">
-          <section class="col-sm-2 api-query-control">
-            <div class="row">
-              <h4>Search ideas</h4>
-              <div class="radio">
-                <label>
-                  <input type="radio" name="api-query-options-search" id="company-either" value="">
-                  All adverse event reports
-                </label>
-              </div>
-              <div class="radio">
-                <label>
-                  <input type="radio" name="api-query-options-search" id="company-yes" value="_exists_:companynumb">
-                  Reported by manufacturers
-                </label>
-              </div>
-              <div class="radio">
-                <label>
-                  <input type="radio" name="api-query-options-search" id="company-no" value="_missing_:companynumb">
-                  Reported directly by public
-                </label>
-              </div>
-              <div class="radio">
-                <label>
-                  <input type="radio" name="api-query-options-search" id="reaction-nausea" value="patient.reaction.reactionmeddrapt:nausea">
-                  Reactions included <em>nausea</em>
-                </label>
-              </div>
-              <div class="radio">
-                <label>
-                  <input type="radio" name="api-query-options-search" id="indication-hypertension" value="patient.drug.drugindication:hypertension">
-                  Indications for use included <em>hypertension</em>
-                </label>
-              </div>
-              <div class="radio">
-                <label>
-                  <input type="radio" name="api-query-options-search" id="indication-ms-not-serious" value="patient.drug.drugindication:multiple+sclerosis+AND+serious:2">
-                  Indications included <em>multiple sclerosis</em> AND reaction <em>not serious</em>
-                </label>
-              </div>
-              <div class="radio">
-                <label>
-                  <input type="radio" name="api-query-options-search" id="patient-sex-male-young" value="patient.patientsex:1+AND+patient.patientonsetage:[5+TO+17]">
-                  Patient sex <em>male</em> and age range <em>5 TO 17.</em>
-                </label>
-              </div>
+        <section class="col-sm-2 api-query-control">
+          <div class="row">
+            <h4>Search ideas</h4>
+            <div class="radio">
+              <label>
+                <input type="radio" name="api-query-options-search" id="company-either" value="" />
+                All adverse event reports
+              </label>
             </div>
-            
-            <div class="row">
-              <h4>Count options</h4>
-              <div class="radio">
-                <label>
-                  <input type="radio" name="api-query-options-count" id="count-country" value="patient.reaction.reactionmeddrapt.exact" checked>
-                  Patient reaction
-                </label>
-              </div>
-              <div class="radio">
-                <label>
-                  <input type="radio" name="api-query-options-count" id="count-country" value="primarysource.reportercountry.exact">
-                  Reporter country
-                </label>
-              </div>
-              <div class="radio">
-                <label>
-                  <input type="radio" name="api-query-options-count" id="count-qualification" value="primarysource.qualification">
-                  Report originator
-                </label>
-              </div>
-              <div class="radio">
-                <label>
-                  <input type="radio" name="api-query-options-count" id="count-serious" value="serious">
-                  Serious
-                </label>
-              </div>
-              <div class="radio">
-                <label>
-                  <input type="radio" name="api-query-options-count" id="count-sex" value="patient.patientsex">
-                  Patient sex
-                </label>
-              </div>
-              <div class="radio">
-                <label>
-                  <input type="radio" name="api-query-options-count" id="count-indication" value="patient.drug.drugindication.exact">
-                  Indications for use
-                </label>
-              </div>
-              <div class="radio">
-                <label>
-                  <input type="radio" name="api-query-options-count" id="count-indication" value="patient.drug.medicinalproduct.exact">
-                  Drug (by name)
-                </label>
-              </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="api-query-options-search" id="company-yes" value="_exists_:companynumb" />
+                Reported by manufacturers
+              </label>
             </div>
-          </section>
+            <div class="radio">
+              <label>
+                <input type="radio" name="api-query-options-search" id="company-no" value="_missing_:companynumb" />
+                Reported directly by public
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="api-query-options-search" id="reaction-nausea" value="patient.reaction.reactionmeddrapt:nausea" />
+                Reactions included <em>nausea</em>
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="api-query-options-search" id="indication-hypertension" value="patient.drug.drugindication:hypertension" />
+                Indications for use included <em>hypertension</em>
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="api-query-options-search" id="indication-ms-not-serious" value="patient.drug.drugindication:multiple+sclerosis+AND+serious:2" />
+                Indications included <em>multiple sclerosis</em> AND reaction <em>not serious</em>
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="api-query-options-search" id="patient-sex-male-young" value="patient.patientsex:1+AND+patient.patientonsetage:[5+TO+17]" />
+                Patient sex <em>male</em> and age range <em>5 TO 17.</em>
+              </label>
+            </div>
+          </div>
           
-          <section class="col-sm-10">
-          	<div class="row">
-          		<div class="chart col-sm-10">
-		            <h3 id="result-count"></h3>
-		            <div id="chart"></div>
-		          </div>
-		          <div class="chart coverage col-sm-2">
-		          	<div id="chart-coverage"></div>
-		          	<div><small>% of all reports</small></div>
-		          </div>
-          </section>
+          <div class="row">
+            <h4>Count options</h4>
+            <div class="radio">
+              <label>
+                <input type="radio" name="api-query-options-count" id="count-country" value="patient.reaction.reactionmeddrapt.exact" checked />
+                Patient reaction
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="api-query-options-count" id="count-country" value="primarysource.reportercountry.exact" />
+                Reporter country
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="api-query-options-count" id="count-qualification" value="primarysource.qualification" />
+                Report originator
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="api-query-options-count" id="count-serious" value="serious" />
+                Serious
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="api-query-options-count" id="count-sex" value="patient.patientsex" />
+                Patient sex
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="api-query-options-count" id="count-indication" value="patient.drug.drugindication.exact" />
+                Indications for use
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="api-query-options-count" id="count-indication" value="patient.drug.medicinalproduct.exact" />
+                Drug (by name)
+              </label>
+            </div>
+          </div>
+        </section>
+          
+        <section class="col-sm-10">
+        	<div class="row">
+        		<div class="chart col-sm-10">
+	            <h3 id="result-count"></h3>
+	            <div id="chart"></div>
+	          </div>
+	          <div class="chart coverage col-sm-2">
+	          	<div id="chart-coverage"></div>
+	          	<div><small>% of all reports</small></div>
+	          </div>
+          </div>
         </section>
       </div>
       <div class="row">
