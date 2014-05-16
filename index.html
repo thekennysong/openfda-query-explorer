@@ -45,96 +45,91 @@
 
       <div class="row">
         <section class="col-sm-2 api-query-control">
-          <div class="row">
-            <h4>Search ideas</h4>
-            <div class="radio">
-              <label>
-                <input type="radio" name="api-query-options-search" id="company-either" value="" />
-                All adverse event reports
-              </label>
-            </div>
-            <div class="radio">
-              <label>
-                <input type="radio" name="api-query-options-search" id="company-yes" value="_exists_:companynumb" />
-                Reported by manufacturers
-              </label>
-            </div>
-            <div class="radio">
-              <label>
-                <input type="radio" name="api-query-options-search" id="company-no" value="_missing_:companynumb" />
-                Reported directly by public
-              </label>
-            </div>
-            <div class="radio">
-              <label>
-                <input type="radio" name="api-query-options-search" id="reaction-nausea" value="patient.reaction.reactionmeddrapt:nausea" />
-                Reactions included <em>nausea</em>
-              </label>
-            </div>
-            <div class="radio">
-              <label>
-                <input type="radio" name="api-query-options-search" id="indication-hypertension" value="patient.drug.drugindication:hypertension" />
-                Indications for use included <em>hypertension</em>
-              </label>
-            </div>
-            <div class="radio">
-              <label>
-                <input type="radio" name="api-query-options-search" id="indication-ms-not-serious" value="patient.drug.drugindication:multiple+sclerosis+AND+serious:2" />
-                Indications included <em>multiple sclerosis</em> AND reaction <em>not serious</em>
-              </label>
-            </div>
-            <div class="radio">
-              <label>
-                <input type="radio" name="api-query-options-search" id="patient-sex-male-young" value="patient.patientsex:1+AND+patient.patientonsetage:[5+TO+17]" />
-                Patient sex <em>male</em> and age range <em>5 TO 17.</em>
-              </label>
-            </div>
+          <h4>Search ideas</h4>
+          <div class="radio">
+            <label>
+              <input type="radio" name="api-query-options-search" id="company-either" value="" />
+              All adverse event reports
+            </label>
           </div>
-          
-          <div class="row">
-            <h4>Count options</h4>
-            <div class="radio">
-              <label>
-                <input type="radio" name="api-query-options-count" id="count-country" value="patient.reaction.reactionmeddrapt.exact" checked />
-                Patient reaction
-              </label>
-            </div>
-            <div class="radio">
-              <label>
-                <input type="radio" name="api-query-options-count" id="count-country" value="primarysource.reportercountry.exact" />
-                Reporter country
-              </label>
-            </div>
-            <div class="radio">
-              <label>
-                <input type="radio" name="api-query-options-count" id="count-qualification" value="primarysource.qualification" />
-                Report originator
-              </label>
-            </div>
-            <div class="radio">
-              <label>
-                <input type="radio" name="api-query-options-count" id="count-serious" value="serious" />
-                Serious
-              </label>
-            </div>
-            <div class="radio">
-              <label>
-                <input type="radio" name="api-query-options-count" id="count-sex" value="patient.patientsex" />
-                Patient sex
-              </label>
-            </div>
-            <div class="radio">
-              <label>
-                <input type="radio" name="api-query-options-count" id="count-indication" value="patient.drug.drugindication.exact" />
-                Indications for use
-              </label>
-            </div>
-            <div class="radio">
-              <label>
-                <input type="radio" name="api-query-options-count" id="count-indication" value="patient.drug.medicinalproduct.exact" />
-                Drug (by name)
-              </label>
-            </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="api-query-options-search" id="company-yes" value="_exists_:companynumb" />
+              Reported by manufacturers
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="api-query-options-search" id="company-no" value="_missing_:companynumb" />
+              Reported directly by public
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="api-query-options-search" id="reaction-nausea" value="patient.reaction.reactionmeddrapt:nausea" />
+              Reactions included <em>nausea</em>
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="api-query-options-search" id="indication-hypertension" value="patient.drug.drugindication:hypertension" />
+              Indications for use included <em>hypertension</em>
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="api-query-options-search" id="indication-ms-not-serious" value="patient.drug.drugindication:multiple+sclerosis+AND+serious:2" />
+              Indications included <em>multiple sclerosis</em> AND reaction <em>not serious</em>
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="api-query-options-search" id="patient-sex-male-young" value="patient.patientsex:1+AND+patient.patientonsetage:[5+TO+17]" />
+              Patient sex <em>male</em> and age range <em>5 TO 17.</em>
+            </label>
+          </div>
+          <h4>Count + chart</h4>
+          <div class="radio">
+            <label>
+              <input type="radio" name="api-query-options-count" id="count-country" value="patient.reaction.reactionmeddrapt.exact" checked />
+              Patient reaction
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="api-query-options-count" id="count-country" value="primarysource.reportercountry.exact" />
+              Reporter country
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="api-query-options-count" id="count-qualification" value="primarysource.qualification" />
+              Report originator
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="api-query-options-count" id="count-serious" value="serious" />
+              Serious
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="api-query-options-count" id="count-sex" value="patient.patientsex" />
+              Patient sex
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="api-query-options-count" id="count-indication" value="patient.drug.drugindication.exact" />
+              Indications for use
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="api-query-options-count" id="count-indication" value="patient.drug.medicinalproduct.exact" />
+              Drug (by name)
+            </label>
           </div>
         </section>
           
@@ -157,26 +152,15 @@
     </div>
     
     <script type="text/javascript">
-      var resultMax, resultTotal;
-
-      function displayData(data) {
-        data = data.slice(1,21);
-
-        $.each(data, function(key, val) {
-          var dl = $('<dl></dl>');
-          $.each(val, function(k, v) {
-            $('<dd>' + v + '</dd>').appendTo(dl);
-          });
-          dl.appendTo('#result');
-        });
-      };
-
       function toTitleCase(string) {
         return string.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
-      }
+      };
 
+      // Manual process to determine the kind of data we're going to chart,
+      // based on the value of the count= parameter.
+      //
       function determineChartContent(data) {
-        var queryCount = $(".api-query").find("#query-count").val(),
+        var queryCount = $("#query-count").val();
             chartContent = "";
         
         if (queryCount.toLowerCase().indexOf("primarysource.reportercountry") >= 0) {
@@ -205,6 +189,13 @@
         return data[0].results.total;
       };
 
+      function updateResultCount(data) {
+        $("#result-count").text(data + " matching adverse event reports");
+      };
+
+      // Draw a mini donut chart that shows the coverage (% of records that match
+      // the search query).
+    
       function updateCoverageChart(resultMax, resultTotal) {
         resultMax -= resultTotal;
 
@@ -247,10 +238,11 @@
         });
       };
 
-      function updateResultCount(data) {
-        $("#result-count").text(data + " matching adverse event reports");
-      };
-
+      // Draw chart using c3.js, using data from the JSON API.
+      // Chart initially has no data; we determine the chart content by looking at
+      // what is being counted, then process the data and supply it to
+      // the c3 chart object.
+      //
       function drawChartWithData(data) {
         var dataForChart = [],
             chartContent = determineChartContent(data),
@@ -275,10 +267,11 @@
               }
             });
 
-        // 1. Slice data to appropriate length.
-        // 2. Iterate through values.
-        // 3. Apply processing logic (chart data-dependent).
-
+        // Data processing. This sequence handles the JSON data returned by the API,
+        // manually processing values to prep them for display in charts--including
+        // turning encoded values into meaningful terms. See below e.g. patientsex,
+        // primarysource.qualification.
+        //
         function iterateThroughValues(data, processingLogic) {
           $.each(data, function(key, val) {
             var dataPair = [];
@@ -289,6 +282,12 @@
           });
         };
 
+        // For each type of returned data (here defined as counting a particular field):
+        //
+        // 1. Slice data to appropriate length.
+        // 2. Iterate through values.
+        // 3. Apply processing logic (chart data-dependent).
+        //
         if (chartContent == "count") {
           data = data.slice(1, 21);
           var processingLogic = function(k, v) {
@@ -377,6 +376,8 @@
         }
       };
 
+      // Make the actual openFDA API calls, and do things with the data.
+      //
       function runQuery(queryStringForMax, queryStringForTotal, queryString) {
         var queryStringForMax = queryStringForMax,
             queryStringForTotal = queryStringForTotal;
@@ -408,69 +409,82 @@
         });
       };
 
-      $(document).ready(function() {
-        function executeQuery() {
-          var queryString = "https://api.fda.gov/drug/event.json?",
-              // queryString = $(".api-query").find("#query-endpoint").text(),
-              querySearch = $(".api-query").find("#query-search").val(),
-              queryCount  = $(".api-query").find("#query-count").val();
+      // Grab the search= and count= parameters, configure query strings,
+      // and pass on to a function that calls the openFDA API.
+      //
+      function configureAndExecuteQuery() {
+        var queryString = "https://api.fda.gov/drug/event.json?",
+            querySearch = $("#query-search").val(),
+            queryCount  = $("#query-count").val();
 
-          // Temporary logic to run a separate query to get an accurate record count.
-          // Necessary because when queries have &count= the API returns an inaccurate
-          // total in the openfda metadata section.
-          // 
-          var queryStringForMax = (queryString + "search=_exists_:receivedate&limit=1");
-          var queryStringForTotal = queryString;
-          querySearch != "" && (queryStringForTotal += "search=" + querySearch);
-          querySearch == "" && (queryStringForTotal += "search=_exists_:receivedate&limit=1");
-          
-          // Construct the full queryString.
-          //
-          querySearch != "" && (queryString += "search=" + querySearch);
-          queryCount  != "" && (queryString += "&count=" + queryCount);
-
-          runQuery(queryStringForMax, queryStringForTotal, queryString);
-          $(".api-query").find("#query-endpoint").text(queryString);
-        };
-        
-        // Execute query on initial page load.
+        // Temporary logic that constructs queries to get max (total in database),
+        // and total matching record counts. Necessary because when queries have &count=
+        // the API returns an inaccurate total in the openfda metadata section.
         //
-        executeQuery();
+        // search=_exists_:receivedate&limit=1 is a query that matches every record,
+        // so it returns an accurate max record count. It is effectively a "get all
+        // records" query.
+        //
+        var queryStringForMax = (queryString + "search=_exists_:receivedate&limit=1");
+        var queryStringForTotal = queryString;
+        querySearch != "" && (queryStringForTotal += "search=" + querySearch);
+        querySearch == "" && (queryStringForTotal = queryStringForMax);
         
-        // Handle keypresses.
+        // Construct the full query string, including contents of the search and count fields.
+        //
+        querySearch != "" && (queryString += "search=" + querySearch);
+        queryCount  != "" && (queryString += "&count=" + queryCount);
+
+        // Run the queries.
+        //
+        runQuery(queryStringForMax, queryStringForTotal, queryString);
+
+        // Populate the query <pre> with the fully constructed query string.
+        //
+        $("#query-endpoint").text(queryString);
+      };
+
+      $(document).ready(function() {
+        // Prevent space characters and handle return key presses in the query textareas.
         //
         $(".query-textarea").keypress(function(e) {
           var code = (e.keyCode ? e.keyCode : e.which),
-              button = $(this).parents(".api-query").find("button#query-button");
+              button = $("button#query-button");
           
           if      (code == 32) { e.preventDefault(); } // Space
           else if (code == 13) {                       // Return
             e.preventDefault();
-            $(button).trigger('click');
+            $(button).trigger("click");
           };
         });
 
         // Change SEARCH= parameter based on radio value.
         //
         $("input[name=api-query-options-search]:radio").change(function() {
-          var queryTextArea = $(".api-query").find("#query-search"),
+          var querySearchTextArea = $("#query-search"),
               queryStringFromRadioButton = $(this).val();
-          queryTextArea.val(queryStringFromRadioButton);
+          querySearchTextArea.val(queryStringFromRadioButton);
           $("button#query-button").trigger("click");
         });
 
         // Change COUNT= parameter based on radio value.
         //
         $("input[name=api-query-options-count]:radio").change(function() {
-          var queryTextArea = $(".api-query").find("#query-count"),
+          var queryCountTextArea = $("#query-count"),
               queryStringFromRadioButton = $(this).val();
-          queryTextArea.val(queryStringFromRadioButton);
+          queryCountTextArea.val(queryStringFromRadioButton);
           $("button#query-button").trigger("click");
         });
 
+        // Clicking on the query button executes a query. 
+        //
         $("button#query-button").click(function () {
-          executeQuery();
+          configureAndExecuteQuery();
         });
+
+        // Execute query when page is loaded.
+        //
+        configureAndExecuteQuery();
       });
     </script>
 
