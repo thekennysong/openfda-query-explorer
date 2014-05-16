@@ -5,9 +5,11 @@
     <script src="js/d3.min.js" charset="utf-8"></script>
     <script src="js/c3.min.js" charset="utf-8"></script>
 
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/c3.css">
-    <link rel="stylesheet" type="text/css" href="openfda-query-explorer.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/c3.css" />
+    <link rel="stylesheet" type="text/css" href="openfda-query-explorer.css" />
+
+    <meta name="robots" content="noindex,nofollow" />
   </head>
   <body>
     <div class="container-fluid">
@@ -44,7 +46,7 @@
       </div>
 
       <div class="row">
-        <section class="col-sm-2 api-query-control">
+        <section class="col-sm-3 api-query-control">
           <h4>Search ideas</h4>
           <div class="radio">
             <label>
@@ -122,32 +124,36 @@
           <div class="radio">
             <label>
               <input type="radio" name="api-query-options-count" id="count-indication" value="patient.drug.drugindication.exact" />
-              Indications for use
+              Associated indications for use
             </label>
           </div>
           <div class="radio">
             <label>
-              <input type="radio" name="api-query-options-count" id="count-indication" value="patient.drug.medicinalproduct.exact" />
-              Drug (by name)
+              <input type="radio" name="api-query-options-count" id="count-class" value="openfda.unii_indexing.va.name.exact" />
+              Associated drugs' pharmacologic classes (openFDA annotation)<br />
+              <div style="color: #aaa; font-size: 11px; margin-top: 3px;">Not all records have this annotation, so counts may be non-representative.</div>
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="api-query-options-count" id="count-drugs" value="patient.drug.medicinalproduct.exact" />
+              Associated drugs (by name)
             </label>
           </div>
         </section>
           
-        <section class="col-sm-10">
+        <section class="col-sm-9">
         	<div class="row">
-        		<div class="chart col-sm-10">
+        		<div class="chart col-sm-9">
 	            <h3 id="result-count"></h3>
 	            <div id="chart"></div>
 	          </div>
-	          <div class="chart coverage col-sm-2">
+	          <div class="chart coverage col-sm-3">
 	          	<div id="chart-coverage"></div>
 	          	<div><small>% of all reports</small></div>
 	          </div>
           </div>
         </section>
-      </div>
-      <div class="row">
-        <section id="result" class="col-sm-3"></section>
       </div>
     </div>
     
